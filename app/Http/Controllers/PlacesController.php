@@ -7,14 +7,14 @@ use App\Place;
 
 class PlacesController extends Controller
 {
-    public function list(Request $req) {
+    public function list() {
         $places = Place::all();
         return view('welcome', compact('places'));
     }
 
     public function create(Request $req) {
         try {
-            $place = Place::create();
+            $place = new Place;
 
             $place->name = $req->name;
             $place->longitude = $req->longitude;
@@ -24,7 +24,7 @@ class PlacesController extends Controller
             $place->save();
             return $place;
         } catch (\Exception $e) {
-            return 'Internal error';
+            return $e;
         }
     }
 }
