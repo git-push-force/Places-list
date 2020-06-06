@@ -24,7 +24,8 @@ class PlacesController extends Controller
             $place->save();
             return $place;
         } catch (\Exception $e) {
-            return $e;
+            // return $e;
+            abort(500, "Internal error");
         }
     }
 }

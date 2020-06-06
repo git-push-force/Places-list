@@ -1,0 +1,40 @@
+form {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 25px;
+}
+
+button {
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.hidden {
+    display: none;
+}
+.alert {
+    margin-top: 20px;
+}
+
+.list-group {
+    margin-top: 20px;
+}
+
+.list-group-item p {
+    margin: 1px !important;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    animation: rotate 1s linear infinite;
+    background-color: white;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg)}
+    to { transform: rotate(360deg)}
+}
