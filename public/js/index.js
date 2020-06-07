@@ -1,3 +1,25 @@
+const showSpinner = () => {
+    document.querySelector('.spinner').classList.remove('hidden');
+    document.querySelector('span').classList.add('hidden');
+    document.querySelector('.btn').disabled = true;
+}
+
+const hideSpinner = () => {
+    document.querySelector('span').classList.remove('hidden');
+    document.querySelector('.spinner').classList.add('hidden');
+    document.querySelector('.btn').disabled = false;
+}
+
+const showSuccessAlert = () => {
+    document.querySelector('.alert-success').classList.remove('hidden');
+    document.querySelector('.alert-danger').classList.add('hidden');
+}
+
+const showDangerAlert = () => {
+    document.querySelector('.alert-success').classList.add('hidden');
+    document.querySelector('.alert-danger').classList.remove('hidden');
+}
+
 const doRequest = async () => {
     const data = {
         name: document.querySelector('#inputName').value,
@@ -6,23 +28,15 @@ const doRequest = async () => {
         population: document.querySelector('#inputPopulation').value,
     };
 
-    document.querySelector('.btn').classList.add('hidden');
-    document.querySelector('.spinner').classList.remove('hidden');
-    document.querySelector('span').classList.add('hidden');
-
+    showSpinner();
     const res = await fetch(`http://localhost:8000/api/create?name=${data.name}&longitude=${data.longitude}&latitude=${data.latitude}&population=${data.population}`);
+    hideSpinner();
 
     if (res.ok) {
-        document.querySelector('.alert-success').classList.remove('hidden');
-        document.querySelector('.alert-danger').classList.add('hidden');
+        showSuccessAlert();
     } else {
-        document.querySelector('.alert-success').classList.add('hidden');
-        document.querySelector('.alert-danger').classList.remove('hidden');
+        showDangerAlert();
     }
-
-    document.querySelector('.btn').classList.remove('hidden');
-    document.querySelector('span').classList.remove('hidden');
-    document.querySelector('.spinner').classList.add('hidden');
 }
  
 document.querySelector('button').addEventListener('click', e => {
