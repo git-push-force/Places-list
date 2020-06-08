@@ -29,7 +29,7 @@ const doRequest = async () => {
     };
 
     showSpinner();
-    const res = await fetch(`http://localhost:8000/api/create?name=${data.name}&longitude=${data.longitude}&latitude=${data.latitude}&population=${data.population}`);
+    const res = await fetch(`/api/create?name=${data.name}&longitude=${data.longitude}&latitude=${data.latitude}&population=${data.population}`);
     hideSpinner();
 
     if (res.ok) {
